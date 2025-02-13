@@ -1,0 +1,17 @@
+{
+  "name": "tempad-plugin-wz",
+  "version": "1.0.0",
+  "description": "Convert standard CSS to WZ utility classes",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "keywords": ["tempad", "plugin", "css"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tempad-dev/plugins": "^0.4.10",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,25 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+devDependencies:
+  '@tempad-dev/plugins':
+    specifier: ^0.4.10
+    version: 0.4.10
+  typescript:
+    specifier: ^5.7.3
+    version: 5.7.3
+
+packages:
+
+  /@tempad-dev/plugins@0.4.10:
+    resolution: {integrity: sha512-lQP41R8E5bIHClfduh4uZB+YnhlgxNqCNE5qwjn7mofPBXJrPgRDgCLv1kh+9Gf+KO4ywshFp2R1CBWsWNCgCw==}
+    dev: true
+
+  /typescript@5.7.3:
+    resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
