@@ -1,4 +1,4 @@
-function l(p){return p}function d(p){return p&&p.__esModule&&Object.prototype.hasOwnProperty.call(p,"default")?p.default:p}var m={"wz-taro-card":`background:#fff;  
+function u(i){return i}function h(i){return i&&i.__esModule&&Object.prototype.hasOwnProperty.call(i,"default")?i.default:i}var s={"wz-taro-card":`background:#fff;  
 border-radius:36px;  
 overflow:hidden;`,"wz-taro-clearfix::after":`display:table;  
 clear:both;  
@@ -106,23 +106,21 @@ margin-bottom:90px;`,"wz-ptb-90":`padding-top:90px;
 padding-bottom:90px;`,"wz-mlr-90":`margin-left:90px;  
 margin-right:90px;`,"wz-plr-90":`padding-left:90px;  
 padding-right:90px;`,"wz-fs-30":`font-size:30px;  
-line-height:1;`,"wz-fs-33":`font-size:33px;  
-line-height:1;`,"wz-fs-36":`font-size:36px;  
-line-height:1;`,"wz-fs-39":`font-size:39px;  
-line-height:1;`,"wz-fs-42":`font-size:42px;  
-line-height:1;`,"wz-fs-45":`font-size:45px;  
-line-height:1;`,"wz-fs-48":`font-size:48px;  
-line-height:1;`,"wz-fs-51":`font-size:51px;  
-line-height:1;`,"wz-fs-54":`font-size:54px;  
-line-height:1;`,"wz-fs-57":`font-size:57px;  
-line-height:1;`,"wz-fs-72":`font-size:72px;  
-line-height:1;`,"wz-fs72":`font-size:72px;  
-line-height:1;`,"wz-fs-81":`font-size:81px;  
-line-height:1;`,"wz-fs81":`font-size:81px;  
-line-height:1;`,"wz-fw-400":"font-weight:400;","wz-fw-500":`font-family:PingFangSC-Medium;  
+line-height:30px;`,"wz-fs-33":`font-size:33px;  
+line-height:33px;`,"wz-fs-36":`font-size:36px;  
+line-height:36px;`,"wz-fs-39":`font-size:39px;  
+line-height:39px;`,"wz-fs-42":`font-size:42px;  
+line-height:42px;`,"wz-fs-45":`font-size:45px;  
+line-height:45px;`,"wz-fs-48":`font-size:48px;  
+line-height:48px;`,"wz-fs-51":`font-size:51px;  
+line-height:51px;`,"wz-fs-54":`font-size:54px;  
+line-height:54px;`,"wz-fs-57":`font-size:57px;  
+line-height:57px;`,"wz-fs-72":`font-size:72px;  
+line-height:72px;`,"wz-fs-81":`font-size:81px;  
+line-height:81px;`,"wz-fw-400":"font-weight:400;","wz-fw-500":`font-family:PingFangSC-Medium;  
 font-weight:500;`,"wz-fw-700":"font-weight:700;","wz-fw-900":"font-weight:900;","wz-br-9":"border-radius:9px;","wz-br-18":"border-radius:18px;","wz-br-27":"border-radius:27px;","wz-br-36":"border-radius:36px;","wz-br-54":"border-radius:54px;","wz-br-63":"border-radius:63px;","wz-flex":`display:flex;  
 flex-direction:row;  
 align-items:center;`,"wz-flex-col":`display:flex;  
-flex-direction:column;`,"wz-flex-wrap":"flex-wrap:wrap;","wz-flex-nowrap":"flex-wrap:nowrap;","wz-col-center":"align-items:center;","wz-col-top":"align-items:flex-start;","wz-col-bottom":"align-items:flex-end;","wz-row-center":"justify-content:center;","wz-row-left":"justify-content:flex-start;","wz-row-right":"justify-content:flex-end;","wz-row-between":"justify-content:space-between;","wz-row-around":"justify-content:space-around;","wz-text-left":"text-align:left;","wz-text-center":"text-align:center;","wz-text-right":"text-align:right;","wz-flex-1":"flex:1 1 auto;","wz-flex-2":"flex:2 2 auto;","wz-flex-3":"flex:3 3 auto;","wz-flex-4":"flex:4 4 auto;","wz-flex-5":"flex:5 5 auto;","wz-flex-6":"flex:6 6 auto;","wz-flex-7":"flex:7 7 auto;","wz-flex-8":"flex:8 8 auto;","wz-flex-9":"flex:9 9 auto;","wz-flex-10":"flex:10 10 auto;","wz-flex-11":"flex:11 11 auto;","wz-flex-12":"flex:12 12 auto;"};const e=d(m),a=new Map;Object.entries(e).forEach(([p,n])=>{const i=n.split(`
-`).map(t=>t.trim()).filter(Boolean).map(t=>t.replace(/;$/,""));a.set(i,p)});function g(p,n){const i=Object.entries(p).map(([t,r])=>`${t}:${r}`);return n.every(t=>i.includes(t))}const w={name:"WZ Style Plugin",code:{"a-className":{title:"wz className",lang:"text",transform({style:p}){const n=[],i={...p};for(const[t,r]of a)g(i,t)&&(n.push(r),t.forEach(o=>{const[x]=o.split(":");delete i[x.trim()]}));return n.join(" ")}},"b-css":{title:"wz less",lang:"css",transform({style:p}){const n={...p};for(const[i]of a)g(n,i)&&i.forEach(t=>{const[r]=t.split(":");delete n[r.trim()]});return Object.entries(n).map(([i,t])=>`${i}: ${t};`).join(`
-`)}}}};export{w as default};
+flex-direction:column;`,"wz-flex-wrap":"flex-wrap:wrap;","wz-flex-nowrap":"flex-wrap:nowrap;","wz-col-center":"align-items:center;","wz-col-top":"align-items:flex-start;","wz-col-bottom":"align-items:flex-end;","wz-row-center":"justify-content:center;","wz-row-left":"justify-content:flex-start;","wz-row-right":"justify-content:flex-end;","wz-row-between":"justify-content:space-between;","wz-row-around":"justify-content:space-around;","wz-text-left":"text-align:left;","wz-text-center":"text-align:center;","wz-text-right":"text-align:right;","wz-flex-1":"flex:1 1 auto;","wz-flex-2":"flex:2 2 auto;","wz-flex-3":"flex:3 3 auto;","wz-flex-4":"flex:4 4 auto;","wz-flex-5":"flex:5 5 auto;","wz-flex-6":"flex:6 6 auto;","wz-flex-7":"flex:7 7 auto;","wz-flex-8":"flex:8 8 auto;","wz-flex-9":"flex:9 9 auto;","wz-flex-10":"flex:10 10 auto;","wz-flex-11":"flex:11 11 auto;","wz-flex-12":"flex:12 12 auto;"};const l=h(s),m=new Map;Object.entries(l).forEach(([i,n])=>{const t=n.split(`
+`).map(p=>p.trim()).filter(Boolean).map(p=>p.replace(/;$/,""));m.set(t,i)});function x(i){return Object.prototype.hasOwnProperty.call(l,i)}function d(i,n){const t=n.split(" ").map(r=>r.trim()),p={};return t.length===1?(p[`${i}-top`]=t[0],p[`${i}-right`]=t[0],p[`${i}-bottom`]=t[0],p[`${i}-left`]=t[0]):t.length===2?(p[`${i}-top`]=t[0],p[`${i}-bottom`]=t[0],p[`${i}-left`]=t[1],p[`${i}-right`]=t[1]):t.length===3?(p[`${i}-top`]=t[0],p[`${i}-right`]=t[1],p[`${i}-bottom`]=t[2],p[`${i}-left`]=t[1]):t.length===4&&(p[`${i}-top`]=t[0],p[`${i}-right`]=t[1],p[`${i}-bottom`]=t[2],p[`${i}-left`]=t[3]),p}function z(i,n){const t=[],{[`${i}-top`]:p,[`${i}-right`]:r,[`${i}-bottom`]:g,[`${i}-left`]:o}=n;if(p===r&&r===g&&g===o){const a=Number.parseInt(p);if(!Number.isNaN(a)){const e=`wz-${i==="padding"?"ptb":"mtb"}-${a}`,w=`wz-${i==="padding"?"plr":"mlr"}-${a}`;if(x(e)&&x(w))return t.push(e,w),t}}if(p===g){const a=Number.parseInt(p);if(!Number.isNaN(a)){const e=`wz-${i==="padding"?"ptb":"mtb"}-${a}`;x(e)&&t.push(e)}}if(o===r){const a=Number.parseInt(o);if(!Number.isNaN(a)){const e=`wz-${i==="padding"?"plr":"mlr"}-${a}`;x(e)&&t.push(e)}}return t}function b(i,n){const t=new Set;return Object.entries(i).forEach(([p,r])=>{if(p==="padding"||p==="margin"){const g=d(p,r);Object.entries(g).forEach(([o,a])=>{t.add(`${o}:${a}`)})}else t.add(`${p}:${r}`)}),n.every(p=>t.has(p))}function f(i,n){const t=[];Object.entries(i).forEach(([p,r])=>{if(p==="padding"||p==="margin"){const g=d(p,r);Object.entries(g).every(([o,a])=>n.includes(`${o}:${a}`))&&t.push(p)}else n.includes(`${p}:${r}`)&&t.push(p)}),t.forEach(p=>{delete i[p]})}const c={name:"WZ Style Plugin",code:{"a-className":{title:"wz className",lang:"text",transform({style:i}){const n=[],t={...i};Object.entries(t).forEach(([p,r])=>{if(p==="padding"||p==="margin"){const g=d(p,r),o=z(p,g);o.length>0&&(n.push(...o),delete t[p])}});for(const[p,r]of m)b(t,p)&&(n.push(r),f(t,p));return n.join(" ")}},"b-css":{title:"wz less",lang:"css",transform({style:i}){const n={...i};Object.entries(n).forEach(([t,p])=>{if(t==="padding"||t==="margin"){const r=d(t,p);z(t,r).length>0&&delete n[t]}});for(const[t]of m)b(n,t)&&f(n,t);return Object.entries(n).map(([t,p])=>`${t}: ${p};`).join(`
+`)}}}};export{c as default};
