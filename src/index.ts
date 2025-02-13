@@ -1,10 +1,6 @@
 import { definePlugin } from '@tempad-dev/plugins'
 import {
-  cssToWzMap,
-  matchRules,
-  parseShorthand,
-  removeMatchedStyles,
-  tryMatchCombinedClass,
+  tryMatchClasses,
 } from './utils'
 
 export default definePlugin({
@@ -29,30 +25,7 @@ export default definePlugin({
       title: 'wz className',
       lang: 'text',
       transform({ style }) {
-        const matchedClasses: string[] = []
-        const remainingStyles = { ...style }
-
-        // 首先尝试匹配组合类
-        Object.entries(remainingStyles).forEach(([key, value]) => {
-          if (key === 'padding' || key === 'margin') {
-            const expanded = parseShorthand(key, value)
-            const combinedClasses = tryMatchCombinedClass(key, expanded)
-            if (combinedClasses.length > 0) {
-              matchedClasses.push(...combinedClasses)
-              delete remainingStyles[key]
-            }
-          }
-        })
-
-        // 然后匹配其他类
-        for (const [rules, className] of cssToWzMap) {
-          if (matchRules(remainingStyles, rules)) {
-            matchedClasses.push(className)
-            removeMatchedStyles(remainingStyles, rules)
-          }
-        }
-
-        return matchedClasses.join(' ')
+        return tryMatchClasses({ ...style }).join(' ')
       },
     },
     // CSS 代码输出
@@ -60,28 +33,30 @@ export default definePlugin({
       title: 'wz less',
       lang: 'css',
       transform({ style }) {
+        // 创建一个新的样式对象用于匹配
         const remainingStyles = { ...style }
 
-        // 首先尝试匹配组合类
-        Object.entries(remainingStyles).forEach(([key, value]) => {
-          if (key === 'padding' || key === 'margin') {
-            const expanded = parseShorthand(key, value)
-            const combinedClasses = tryMatchCombinedClass(key, expanded)
-            if (combinedClasses.length > 0) {
-              delete remainingStyles[key]
-            }
-          }
-        })
+        // 尝试匹配所有类，这个过程会修改 remainingStyles
+        const matchedClasses = tryMatchClasses(remainingStyles)
 
-        // 然后匹配其他类
-        for (const [rules] of cssToWzMap) {
-          if (matchRules(remainingStyles, rules)) {
-            removeMatchedStyles(remainingStyles, rules)
-          }
-        }
+        // 如果没有匹配到任何类名，返回空字符串
+        if (matchedClasses.length === 0)
+          return ''
 
         // 返回剩余的样式
         return Object.entries(remainingStyles)
+          .filter(([_, value]) => value !== undefined && value !== '')
+          .map(([key, value]) => `${key}: ${value};`)
+          .join('\n')
+      },
+    },
+    // 原始 CSS 代码输出
+    'c-css': {
+      title: '原始样式',
+      lang: 'css',
+      transform({ style }) {
+        // 返回原样式
+        return Object.entries(style)
           .map(([key, value]) => `${key}: ${value};`)
           .join('\n')
       },

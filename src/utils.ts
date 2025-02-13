@@ -149,6 +149,42 @@ export function matchRules(style: Record<string, string>, rules: string[]): bool
   return rules.every(rule => styleStrings.has(rule))
 }
 
+// 检查是否匹配字体大小类
+function matchFontSizeClass(style: Record<string, string>): string | null {
+  const fontSize = style['font-size']
+  const lineHeight = style['line-height']
+
+  if (!fontSize)
+    return null
+
+  // 提取数值
+  const fontSizeMatch = fontSize.match(/^(\d+)px$/)
+  if (!fontSizeMatch)
+    return null
+
+  const fontSizeValue = fontSizeMatch[1]
+  const className = `wz-fs-${fontSizeValue}`
+
+  // 检查类名是否存在
+  if (!hasClassName(className))
+    return null
+
+  // 如果有 line-height，检查是否与 font-size 相同
+  if (lineHeight) {
+    const lineHeightMatch = lineHeight.match(/^(\d+)px$/)
+    if (!lineHeightMatch)
+      return null
+
+    const lineHeightValue = lineHeightMatch[1]
+    // 只有当 line-height 和 font-size 相同时，才完全匹配
+    if (fontSizeValue === lineHeightValue)
+      return className
+  }
+
+  // 如果没有 line-height 或值不同，也返回类名
+  return className
+}
+
 // 移除匹配的样式
 export function removeMatchedStyles(style: Record<string, string>, rules: string[]): void {
   const toDelete: string[] = []
@@ -165,7 +201,22 @@ export function removeMatchedStyles(style: Record<string, string>, rules: string
       }
     }
     else if (rules.includes(`${key}:${value}`)) {
-      toDelete.push(key)
+      // 特殊处理字体大小规则
+      if (key === 'font-size') {
+        toDelete.push(key)
+        // 只有当 line-height 值与 font-size 相同时，才删除 line-height
+        const fontSize = value.match(/^(\d+)px$/)?.[1]
+        const lineHeight = style['line-height']?.match(/^(\d+)px$/)?.[1]
+        if (fontSize && lineHeight && fontSize === lineHeight) {
+          toDelete.push('line-height')
+        }
+      }
+      else if (key === 'line-height') {
+        // line-height 的删除已经在 font-size 处理时决定
+      }
+      else {
+        toDelete.push(key)
+      }
     }
   })
 
@@ -173,4 +224,52 @@ export function removeMatchedStyles(style: Record<string, string>, rules: string
   toDelete.forEach((key) => {
     delete style[key]
   })
+}
+
+// 尝试匹配所有可能的类
+export function tryMatchClasses(style: Record<string, string>): string[] {
+  const matchedClasses: string[] = []
+  const remainingStyles = { ...style }
+
+  // 1. 首先尝试匹配字体大小类
+  const fontSizeClass = matchFontSizeClass(remainingStyles)
+  if (fontSizeClass) {
+    matchedClasses.push(fontSizeClass)
+    // 删除 font-size，如果 line-height 相同也删除
+    delete remainingStyles['font-size']
+    const fontSize = style['font-size']?.match(/^(\d+)px$/)?.[1]
+    const lineHeight = style['line-height']?.match(/^(\d+)px$/)?.[1]
+    if (fontSize && lineHeight && fontSize === lineHeight) {
+      delete remainingStyles['line-height']
+    }
+  }
+
+  // 2. 尝试匹配 padding 和 margin
+  for (const property of ['padding', 'margin']) {
+    if (remainingStyles[property]) {
+      const expanded = parseShorthand(property, remainingStyles[property])
+      const matches = tryMatchCombinedClass(property, expanded)
+      if (matches.length > 0) {
+        matchedClasses.push(...matches)
+        delete remainingStyles[property]
+      }
+    }
+  }
+
+  // 3. 尝试匹配其他类
+  for (const [rules, className] of cssToWzMap.entries()) {
+    if (matchRules(remainingStyles, rules)) {
+      matchedClasses.push(className)
+      removeMatchedStyles(remainingStyles, rules)
+    }
+  }
+
+  // 更新原始样式对象
+  Object.keys(style).forEach((key) => {
+    if (remainingStyles[key] === undefined) {
+      delete style[key]
+    }
+  })
+
+  return matchedClasses
 }
