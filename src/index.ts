@@ -4,7 +4,7 @@ import {
 } from './utils'
 
 export default definePlugin({
-  name: 'WZ Style Plugin',
+  name: 'WZ Style',
   code: {
     'css': {
       title: 'delete-CSS',

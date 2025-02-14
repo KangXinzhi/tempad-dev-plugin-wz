@@ -10,18 +10,10 @@
 
 1. 从 Chrome Web Store 安装 [TemPad Dev](https://chromewebstore.google.com/detail/tempad-dev/lgoeakbaikpkihoiphamaeopmliaimpc)
 
-2. 在 TemPad Dev 的插件区域安装 `@wz` 插件
+2. 在 TemPad Dev 的插件区域安装 `@baidu/wz` 插件
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/demo-dark.gif">
-  <source media="(prefers-color-scheme: light)" srcset="assets/demo-light.gif">
-  <img alt="点击插件区域的添加按钮，输入 @wz 并回车安装" src="assets/demo-light.gif">
-</picture>
+![安装](assets/download.gif)
 
-## 功能特性
+## 使用
 
-- 智能识别样式组合，优先使用最匹配的 WZ 类名
-- 支持 padding/margin 的各种缩写形式
-- 支持 font-size 和 line-height 的组合处理
-- 支持常见组件样式的转换（如卡片、文本省略等）
-- 对于无法完全匹配的样式，保留原始的 CSS 代码
+![使用](assets/use.gif)
