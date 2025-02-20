@@ -4,7 +4,7 @@ import {
 } from './utils'
 
 export default definePlugin({
-  name: 'WZ Style',
+  name: 'baidu-health/wz-style',
   code: {
     'css': {
       title: 'delete-CSS',
